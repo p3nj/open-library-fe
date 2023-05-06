@@ -5,7 +5,7 @@ const statsUrl = "https://api.coinstats.app/public/v1/";
 
 export default function FetchData(params, controller) {
     let url;
-    if (params.apiUri.includes('reddit')) {
+    if (!params.apiUri.includes('coin')) {
         url = buildUrl(params, controller);
     } else {
         url = `${statsUrl}${params.apiUri}`;
