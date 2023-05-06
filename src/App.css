@@ -1,38 +1,112 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 10vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(5px + 2vmin);
+    color: white;
+}
+
+.App-body {
+    background-color: #28292A;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(2px + 1vmin);
+    color: white;
+}
+
+.loader {
+    justify-content: center;
+    align-content: center;
+}
+
+.nav.nav-pills .nav-link.active {
+    background-color: #28292A;
+}
+
+small {
+    float: left;
+    vertical-align: top;
+    font-size: calc(1px + 1vmin);
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+img {
+    border-radius: 0.5rem;
+}
+
+.feeds {
+    justify-content: left;
+}
+
+.debug {
+    background-color: #FF0000;
+}
+
+nav {
+    background-color: #333;
+}
+
+.sticky-headings {
+    position: sticky;
+    top: 0px;
+}
+
+.cell-fall {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f44336;
+}
+
+.cell-raise {
+    text-align: center;
+    font-weight: bold;
+    background-color: #4caf50;
+}
+
+.feeds-items {
+    background-color: #28292A;
+    color: #C5C1BD;
+}
+
+.feeds-author {
+    color: #9E9D99;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        min-width: 100%;
+    }
 }
