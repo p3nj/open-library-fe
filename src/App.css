@@ -81,7 +81,7 @@ nav {
 
 .sticky-headings {
     position: sticky;
-    top: 0px;
+    top: 0;
 }
 
 .cell-fall {
