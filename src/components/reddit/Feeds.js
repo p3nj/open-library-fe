@@ -32,7 +32,7 @@ export default function Feeds() {
 
     useEffect(() => {
         const props = {
-            apiUri: `api.reddit.com/${uri}`,
+            apiUri: `${uri}`,
         }
 
         FetchData(props, params)
