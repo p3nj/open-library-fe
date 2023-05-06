@@ -1,5 +1,5 @@
 const contentType = "application/json charset=UTF8";
-const redditUrl = "https://cors-anywhere-3.herokuapp.com/";
+const redditUrl = "https://api.reddit.com/";
 const statsUrl = "https://api.coinstats.app/public/v1/";
 
 
