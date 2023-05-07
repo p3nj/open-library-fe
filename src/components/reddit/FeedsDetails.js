@@ -209,12 +209,12 @@ export default function FeedsDetails(props) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="d-flex justify-content-between">
-                        <p style={{fontSize: "calc(5px + 2vmin)"}}>
+                    <div className="flex justify-content-between">
+                        <span className="h6">
                             by <span
-                            className="h6"> {thread.item.author}</span> at {handleTimeDisplay(thread.item)} with <span
-                            className="h6">{handleUpVoteDisplay(thread.item.score)}</span> upvodes
-                        </p>
+                            className="h5"> {thread.item.author}</span> at {handleTimeDisplay(thread.item)} with <span
+                            className="h5">{handleUpVoteDisplay(thread.item.score)}</span> upvodes
+                        </span>
                     </div>
                 </Modal.Footer>
             </Modal>
