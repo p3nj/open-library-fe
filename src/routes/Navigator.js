@@ -8,6 +8,11 @@ import Login from "../components/auth/Login";
 import ForgotPassword from "../components/auth/ForgotPassword";
 import Register from "../components/auth/Register";
 
+const authButtonStyle = {
+    marginRight: "1rem",
+    marginLeft: "0.5rem"
+}
+
 export function Navigation() {
     return (
         <Routes>
@@ -50,8 +55,8 @@ export function Navigator() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/cryptostats">Crypto Stats</Nav.Link>
-                        <NavDropdown title="Reddits" id="basic-nav-dropdown">
+                        <Nav.Link style={{marginLeft: "1rem"}} href="/cryptostats">Crypto Stats</Nav.Link>
+                        <NavDropdown style={{marginLeft: "1rem"}} title="Reddits" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/r/CryptoCurrency">
                                 r/CryptoCurrency
                             </NavDropdown.Item>
@@ -77,9 +82,10 @@ export function Navigator() {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link onClick={handleLogin}>Login</Nav.Link>
+                        <Nav.Link onClick={handleLogin}
+                                  style={authButtonStyle}>Login</Nav.Link>
                         <Nav.Link onClick={handleRegister}
-                                  style={{marginRight: "1rem", marginLeft: "0.5rem"}}>Register</Nav.Link>
+                                  style={authButtonStyle}>Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
