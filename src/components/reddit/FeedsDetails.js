@@ -92,11 +92,12 @@ export default function FeedsDetails(props) {
                 show: true,
                 item: thread.item
             });
-        } else {
+        } else if (thread.item.domain === "reddit.com") {
             return window.location = `https://www.reddit.com/${thread.item.permalink}`
+        } else {
+            return window.location = thread.item.url;
         }
     }
-
 
     const handleTitleClick = m => {
         console.log(m.data);
@@ -154,6 +155,7 @@ export default function FeedsDetails(props) {
                                 <ListGroup.Item
                                     className="feeds-items"
                                     key={m.data.id}
+                                    onClick={() => handleTitleClick(m)}
                                 >
                                     <div className="d-flex justify-content-between align-items-center feeds-items">
                                         <div className="d-flex align-items-left">
