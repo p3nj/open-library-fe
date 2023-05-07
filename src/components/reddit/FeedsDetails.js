@@ -92,7 +92,7 @@ export default function FeedsDetails(props) {
                 show: true,
                 item: thread.item
             });
-        } else if (thread.item.domain === "reddit.com" || thread.item.domain.contains("self.")) {
+        } else if (thread.item.domain === "reddit.com" || thread.item.domain.includes("self.")) {
             return window.location = `https://www.reddit.com/${thread.item.permalink}`
         } else {
             return window.location = thread.item.url;
