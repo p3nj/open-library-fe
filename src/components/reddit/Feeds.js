@@ -9,7 +9,7 @@ const FeedsDetailsComponent = React.lazy(() => import('./FeedsDetails'));
 export default function Feeds() {
     let {boardName} = useParams();
     const boardTypeList = ["hot", "new", "best", "rising"];
-    const [ boardTitle, setBoardTitle ] = useState(`r/${boardName}`);
+    const [boardTitle, setBoardTitle] = useState(`r/${boardName}`);
     const [items, setItems] = useState({});
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ export default function Feeds() {
 
     useEffect(() => {
         const props = {
-            apiUri: `${uri}`,
+            apiUri: `api.reddit.com/${uri}`,
         }
 
         FetchData(props, params)
@@ -42,8 +42,7 @@ export default function Feeds() {
                     // avoid unvalid search result.
                     setPosts(r.data.children);
                     setThread(r.data.after?.startsWith('t3_'));
-                }
-                catch(e) {
+                } catch (e) {
                     setThread(false);
                 }
 
@@ -140,7 +139,7 @@ export default function Feeds() {
         <div id="feeds" className="container">
             <div className="sticky top-0 h-24 bg-blue-200">
                 <Form.Label htmlFor="subreddit"
-                            className="h1">{ boardTitle }</Form.Label>
+                            className="h1">{boardTitle}</Form.Label>
                 <Form.Control
                     type="text"
                     id="subreddit"

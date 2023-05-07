@@ -4,8 +4,8 @@ const footerBottomStyle = {
     textAlign: 'center',
     paddingTop: '1rem',
 }
-const footerStyle = {
 
+const footerStyle = {
     width: "100%",
     backgroundColor: "#333",
     color: "#fff",

@@ -1,15 +1,32 @@
 /* eslint-disable react/prop-types */
 import React, {useEffect, useState} from "react";
+import moment from "moment/moment";
+import parse from 'html-react-parser';
+import SuchEmpty from "../defaults/SuchEmpty";
 import {ThreeDots} from "react-loader-spinner";
 import {ListGroup, Modal, Pagination} from 'react-bootstrap';
-import moment from "moment/moment";
-import SuchEmpty from "../defaults/SuchEmpty";
-import parse from 'html-react-parser';
 
 
 export default function FeedsDetails(props) {
-    const [data, setData] = useState([]); const [modalShow, setModalShow] = useState(false);
+    const [data, setData] = useState([]);
+    const [modalShow, setModalShow] = useState(false);
     const [imgPerma, setImgPerma] = useState({});
+
+    const Loading = () => {
+        return (
+            <ThreeDots
+                height="100"
+                width="100"
+                radius="9"
+                color="lightgrey"
+                ariaLabel="loading"
+                wrapperStyle={{}}
+                wrapperClass="loader"
+                visible={true}
+                className="container-fulid loader"
+            />
+        )
+    }
 
     useEffect(() => {
         setData(props.posts);
@@ -23,6 +40,16 @@ export default function FeedsDetails(props) {
         console.log(props.thread);
         return <SuchEmpty/>
     }
+    const decodeHtml = (html) => {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
+    const isImg = (url) => {
+        return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    }
+
     const handlePrevClick = () => {
         props.handleCallBack({
             before: props.paging.after,
@@ -87,7 +114,7 @@ export default function FeedsDetails(props) {
                                         <div className="d-flex align-items-left">
                                             <img
                                                 className="img-fulid"
-                                                src={ isImg(m.data.thumbnail) ? m.data.thumbnail : "https://i.redd.it/ldbo7yn202m21.jpg"}
+                                                src={isImg(m.data.thumbnail) ? m.data.thumbnail : "https://i.redd.it/ldbo7yn202m21.jpg"}
                                                 alt="Thread Picture"
                                                 onClick={() => handleLinkClick(m.data)}
                                                 style={{
@@ -108,7 +135,7 @@ export default function FeedsDetails(props) {
                                                     className="mb-1"
                                                 >
                                                     {m.kind === "t3" ?
-                                                            parse(decodeHtml(m.data.selftext_html)): <br />
+                                                        parse(decodeHtml(m.data.selftext_html)) : <br/>
                                                     }
                                                 </p>
                                                 <small className="h6 feeds-author">Posted
@@ -144,28 +171,3 @@ export default function FeedsDetails(props) {
         </div>
     )
 }
-function decodeHtml(html) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-}
-function Loading() {
-    return (
-        <ThreeDots
-            height="100"
-            width="100"
-            radius="9"
-            color="lightgrey"
-            ariaLabel="loading"
-            wrapperStyle={{}}
-            wrapperClass="loader"
-            visible={true}
-            className="container-fulid loader"
-        />
-    )
-}
-
-function isImg(url) {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-}
-

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import {Route, Routes} from 'react-router-dom';
 import Feeds from '../components/reddit/Feeds';
 import Home from '../components/layout/Home';
 import CryptoStats from '../components/stats/CryptoStats';
+import Login from "../components/auth/Login";
+import ForgotPassword from "../components/auth/ForgotPassword";
+import Register from "../components/auth/Register";
 
 export function Navigation() {
     return (
@@ -13,6 +16,9 @@ export function Navigation() {
             <Route path="/r/:boardName/search" element={<Feeds/>}></Route>
             <Route path="/search" element={<Feeds/>}></Route>
             <Route path="/cryptostats" element={<CryptoStats/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/forgot" element={<ForgotPassword/>}></Route>
+            <Route path="/register" element={<Register/>}></Route>
             <Route path="/*" element={<Home/>}></Route>
         </Routes>
     )
@@ -32,40 +38,53 @@ const Icon = () => {
 }
 
 export function Navigator() {
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
+    const handleLogin = () => setShowLogin(!showLogin)
+    const handleRegister = () => setShowRegister(!showRegister);
+
     return (
-        <Navbar className="nav" bg="dark" sticky="top" expand="lg" variant="dark">
-            <Navbar.Brand href="/"><Icon/>Yet Another Crypto Viewer</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link href="/cryptostats">Crypto Stats</Nav.Link>
-                    <NavDropdown title="Reddits" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/r/CryptoCurrency">
-                            r/CryptoCurrency
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/r/BitCoin">
-                            r/BitCoin
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/r/Ethereum">
-                            r/Ethereum
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/r/DogeCoin">
-                            r/DogeCoin
-                        </NavDropdown.Item>
-                        <NavDropdown.Divider/>
-                        <NavDropdown.Item href="/r/TodayILearned">
-                            r/TodayILearned
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/r/Australia">
-                            r/Australia
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="/r/Brisbane">
-                            r/Brisbane
-                        </NavDropdown.Item>
-                    </NavDropdown>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+        <>
+            <Navbar className="nav" bg="dark" sticky="top" expand="lg" variant="dark">
+                <Navbar.Brand href="/"><Icon/>Yet Another Crypto Viewer</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="/cryptostats">Crypto Stats</Nav.Link>
+                        <NavDropdown title="Reddits" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/r/CryptoCurrency">
+                                r/CryptoCurrency
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/r/BitCoin">
+                                r/BitCoin
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/r/Ethereum">
+                                r/Ethereum
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/r/DogeCoin">
+                                r/DogeCoin
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="/r/TodayILearned">
+                                r/TodayILearned
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/r/Australia">
+                                r/Australia
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/r/Brisbane">
+                                r/Brisbane
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link onClick={handleLogin}>Login</Nav.Link>
+                        <Nav.Link onClick={handleRegister}>Register</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+            <Login show={showLogin} handleClose={handleLogin}/>
+            <Register show={showRegister} handleClose={handleRegister}/>
+        </>
     )
 }
 

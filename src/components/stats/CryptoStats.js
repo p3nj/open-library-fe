@@ -34,7 +34,7 @@ export default function CryptoStats() {
     }
 
     const autoGroupColumnDef = {
-        minWidth: 200,
+        minWidth: 150,
     }
 
     const columnDefs = [
@@ -44,26 +44,23 @@ export default function CryptoStats() {
                 {
                     field: 'Graph',
                     cellRenderer: (props) => renderGraphicBtn(props),
-                    maxWidth: 120,
                 },
                 {
                     headerName: 'SYM',
                     field: 'icon',
                     cellRenderer: (props) => renderGraphicIcon(props),
                     cellStyle: {textAlign: 'left'},
-                    maxWidth: 150
                 },
                 {
                     field: 'name',
                     filter: true,
-                    sortable: true
+                    sortable: true,
                 },
                 {
                     field: 'price',
                     filter: 'agNumberColumnFilter',
                     sortable: true,
                     type: 'rightAligned',
-                    maxWidth: 400
                 },
                 {
                     headerName: 'to BTC',
@@ -71,7 +68,6 @@ export default function CryptoStats() {
                     filter: 'agNumberColumnFilter',
                     sortable: true,
                     type: 'rightAligned',
-                    minWidth: 250
                 },
                 {
                     headerName: '1 Hour',
@@ -101,13 +97,11 @@ export default function CryptoStats() {
                     headerName: 'Website',
                     field: 'websiteUrl',
                     cellRenderer: (props) => renderURL(props),
-                    maxWidth: 100
                 },
                 {
                     headerName: 'Twitter',
                     field: 'twitterUrl',
                     cellRenderer: (props) => renderURL(props),
-                    maxWidth: 100
                 }]
         }];
 
@@ -176,9 +170,6 @@ export default function CryptoStats() {
 
     items.map(m => {
         m.price = Number.parseFloat(m.price).toFixed(8);
-        //m.priceChange1h = numberWithCommas(m.priceChange1d);
-        //m.priceChange1d = numberWithCommas(m.priceChange1d);
-        //m.priceChange1w = numberWithCommas(m.priceChange1w);
     });
 
 
@@ -186,9 +177,9 @@ export default function CryptoStats() {
         <>
             <Modal
                 className="modal-lg"
+                aria-labelledby="contained-modal-title-vcenter"
                 show={modalShow} onHide={() => setModalShow(false)}
                 size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
                 <Modal.Header>
@@ -199,15 +190,15 @@ export default function CryptoStats() {
                 </Modal.Body>
                 <Modal.Footer><span>Powered by crypto-connect-web</span></Modal.Footer>
             </Modal>
-            <div className="ag-theme-alpine" style={{height: '95vw', width: '95vw'}}>
+            <div className="ag-theme-alpine" style={{height: '95vh', width: '95vw'}}>
                 <AgGridReact
-                    animateRows={true}
                     rowData={items}
+                    animateRows={true}
                     rowSelection="single"
                     columnDefs={columnDefs}
                     defaultColDef={defaultColDef}
-                    autoGroupColumnDef={autoGroupColumnDef}
                     paginationAutoPageSize={true}
+                    autoGroupColumnDef={autoGroupColumnDef}
                     onRowDoubleClicked={(e) => handleRowClick(e)}
                 >
                 </AgGridReact>
