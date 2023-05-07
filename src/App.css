@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: calc(2px + 1vmin);
+    font-size: calc(1px + 2vmin);
     color: white;
 }
 
