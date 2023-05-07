@@ -137,15 +137,17 @@ export default function FeedsDetails(props) {
     return (
         <div className="container feeds-items">
             <ListGroup variant="flush" border="primary">
-                <Pagination className="w-100">
-                    <Pagination.Prev
-                        className="w-50"
-                        onClick={handlePrevClick}
-                    />
-                    <Pagination.Next
-                        className="w-50"
-                        onClick={handleNextClick}/>
-                </Pagination>
+                <div>
+                    <Pagination className="w-100">
+                        <Pagination.Prev
+                            className="w-50"
+                            onClick={handlePrevClick}
+                        />
+                        <Pagination.Next
+                            className="w-50"
+                            onClick={handleNextClick}/>
+                    </Pagination>
+                </div>
                 {
                     data.filter((r) => !r.data.stickied)
                         .map((m) => (
@@ -174,7 +176,7 @@ export default function FeedsDetails(props) {
                                                 >
                                                     {m.data.title}
                                                 </p>
-                                                <small className="h6 feeds-author">Posted
+                                                <small className="h6 feeds-author">
                                                     by {m.data.author} at {handleTimeDisplay(m.data)}  </small>
                                             </div>
                                         </div>
@@ -183,7 +185,6 @@ export default function FeedsDetails(props) {
                             )
                         )
                 }
-
                 <Pagination className="w-100">
                     <Pagination.Prev
                         className="w-50"
@@ -212,7 +213,8 @@ export default function FeedsDetails(props) {
                     <div className="flex justify-content-between">
                         <span className="h6">
                             by <span
-                            className="h5"> {thread.item.author}</span> at {handleTimeDisplay(thread.item)} with <span
+                            className="h5"> {thread.item.author}</span> at <a
+                            href={`https://www.reddit.com/${thread.item.permalink}`}>{handleTimeDisplay(thread.item)}</a> with <span
                             className="h5">{handleUpVoteDisplay(thread.item.score)}</span> upvodes
                         </span>
                     </div>
@@ -227,13 +229,13 @@ export default function FeedsDetails(props) {
                     <img className="img-fluid" alt="img" src={img.item.url}></img>
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="d-flex justify-content-between">
-                        <p style={{fontSize: "calc(5px + 2vmin)"}}>
+                    <div className="flex justify-content-between">
+                        <span className="h6">
                             by <span
-                            className="h6"> {img.item.author}</span> at <span
-                            className="h6">{handleTimeDisplay(img.item)}</span> with <span
-                            className="h6">{handleUpVoteDisplay(img.item.score)}</span> upvodes
-                        </p>
+                            className="h5"> {img.item.author}</span> at <a
+                            href={`https://www.reddit.com/${img.item.permalink}`}>{handleTimeDisplay(img.item)}</a> with <span
+                            className="h5">{handleUpVoteDisplay(img.item.score)}</span> upvodes
+                        </span>
                     </div>
                 </Modal.Footer>
             </Modal>

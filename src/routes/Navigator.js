@@ -78,7 +78,8 @@ export function Navigator() {
                     </Nav>
                     <Nav>
                         <Nav.Link onClick={handleLogin}>Login</Nav.Link>
-                        <Nav.Link onClick={handleRegister}>Register</Nav.Link>
+                        <Nav.Link onClick={handleRegister}
+                                  style={{marginRight: "1rem", marginLeft: "0.5rem"}}>Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

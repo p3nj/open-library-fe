@@ -137,7 +137,10 @@ export default function Feeds() {
 
     return (
         <div id="feeds" className="container">
-            <div className="sticky top-0 h-24 bg-blue-200">
+            <div
+                className="sticky top-0 h-24 bg-blue-200"
+                style={{margin: "1rem auto"}}
+            >
                 <Form.Label htmlFor="subreddit"
                             className="h1">{boardTitle}</Form.Label>
                 <Form.Control
