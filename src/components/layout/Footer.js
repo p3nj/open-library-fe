@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer className="footer" style={footerStyle}>
             <div className="footer-bottom" style={footerBottomStyle}>
-                <p>IFN666 Web and Mobile Application Development - Benjamin Wang</p>
+                <p>Yet Another Crypto Viewer is the best thing since sliced bread.</p>
             </div>
         </footer>
     );
